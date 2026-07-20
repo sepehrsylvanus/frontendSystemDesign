@@ -57,3 +57,8 @@ export async function verifyPassword(
 ): Promise<boolean> {
   return bcrypt.compare(password, hashedPassword);
 }
+
+export async function removeAuthCookie(): Promise<void> {
+  const cookieStore = await cookies();
+  cookieStore.delete("auth-token");
+}

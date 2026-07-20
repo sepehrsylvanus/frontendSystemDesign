@@ -33,21 +33,21 @@ export async function login(formData: FormData) {
 
     if (!user) {
       return { error: { _form: ["Invalid email or password"] } };
-
-      const isValid = await verifyPassword(password, user.password);
-      if (!isValid) {
-        return { error: { _form: ["Invalid email or password"] } };
-      }
-
-      const token = await createToken({
-        userId: user.id,
-        email: user.email,
-        username: user.username,
-        role: user.role,
-      });
-
-      await setAuthCookie(token);
     }
+
+    const isValid = await verifyPassword(password, user.password);
+    if (!isValid) {
+      return { error: { _form: ["Invalid email or password"] } };
+    }
+
+    const token = await createToken({
+      userId: user.id,
+      email: user.email,
+      username: user.username,
+      role: user.role,
+    });
+
+    await setAuthCookie(token);
   } catch (error) {
     console.error("Login error:", error);
     return { error: { _form: ["Something went wrong. Please try again."] } };
