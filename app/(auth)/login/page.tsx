@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { login } from "@/features/feed/components/actions/login";
+import { login } from "@/features/feed/actions/login";
 
 const page = () => {
   const [errors, setErrors] = useState<Record<string, string[]>>({});

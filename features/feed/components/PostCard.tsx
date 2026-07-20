@@ -1,6 +1,6 @@
 import { useState, useTransition } from "react";
-import { toggleLike } from "./actions/toggleLike";
-import { toggleBookmark } from "./actions/toggleBookmark";
+import { toggleLike } from "../actions/toggleLike";
+import { toggleBookmark } from "../actions/toggleBookmark";
 import {
   Card,
   CardContent,

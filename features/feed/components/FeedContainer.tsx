@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RefreshCw } from "lucide-react";
 import { useCallback, useRef } from "react";
-import { useFeed } from "./hooks/useFeed";
+import { useFeed } from "../hooks/useFeed";
 import PostCard from "./PostCard";
 import { Spinner } from "@/components/ui/spinner";
 
