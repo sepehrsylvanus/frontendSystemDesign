@@ -22,7 +22,10 @@ export function formatDate(date: Date | string): string {
     year: d.getFullYear() !== new Date().getFullYear() ? "numeric" : undefined,
   });
 }
-
+export function truncate(text: string, length: number): string {
+  if (text.length <= length) return text;
+  return text.slice(0, length).trim() + "...";
+}
 export function formatRelativeTime(date: Date | string): string {
   const now = new Date();
   const d = new Date(date);
@@ -37,4 +40,18 @@ export function formatRelativeTime(date: Date | string): string {
   if (diffHr < 24) return `${diffHr}h ago`;
   if (diffDay < 7) return `${diffDay}d ago`;
   return formatDate(date);
+}
+
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/--+/g, "-")
+    .trim();
+}
+
+export function generateExcerpt(content: string, maxLength = 150): string {
+  const plainText = content.replace(/<[^>]+>/g, "").replace(/\n+/g, " ");
+  return truncate(plainText, maxLength);
 }
