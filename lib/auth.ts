@@ -50,3 +50,10 @@ export async function setAuthCookie(token: string): Promise<void> {
     path: "/",
   });
 }
+
+export async function verifyPassword(
+  password: string,
+  hashedPassword: string,
+): Promise<boolean> {
+  return bcrypt.compare(password, hashedPassword);
+}
